@@ -1,5 +1,7 @@
 package com.example.plantistapi.service;
 
+import com.example.plantistapi.model.Plant;
+import com.example.plantistapi.runner.PlantDto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +13,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 @Service
-public class HousePlantsService {
+public class ApiPlantService {
 
     @Value("${api.key}")
     private String apiKey;
@@ -40,4 +42,27 @@ public class HousePlantsService {
         System.out.println(response);
         return response.body();
     }
+
+    public Plant convertToPlantEntity(PlantDto plantDto) {
+        Plant plant = new Plant();
+
+        plant.setCategory(plantDto.getCategory());
+        plant.setClimate(plantDto.getClimate());
+        plant.setFamily(plantDto.getFamily());
+        plant.setDiseases(plantDto.getDiseases());
+        plant.setIdeallight(plantDto.getIdeallight());
+        plant.setLatin(plantDto.getLatin());
+        plant.setOrigin(plantDto.getOrigin());
+        plant.setTempmaxCelsius(plantDto.getTempmax().getCelsius());
+        plant.setTempmaxFahrenheit(plantDto.getTempmax().getFahrenheit());
+        plant.setTempminCelsius(plantDto.getTempmin().getCelsius());
+        plant.setTempminFahrenheit(plantDto.getTempmin().getFahrenheit());
+        plant.setToleratedlight(plantDto.getToleratedlight());
+        plant.setCommon(plantDto.getCommon());
+        plant.setUse(plantDto.getUse());
+        plant.setInsects(plantDto.getInsects());
+        plant.setWatering(plantDto.getWatering());
+        return plant;
+    }
+
 }
