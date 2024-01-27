@@ -23,4 +23,12 @@ public class PlantService {
     public List<Plant> findAll() {
         return plantRepository.findAll();
     }
+
+    public List<Plant> findByLatinIgnoreCase(String latin) {
+        return plantRepository.findByLatinIgnoreCase(latin);
+    }
+
+    public List<Plant> findByLatinContainingIgnoreCase(String latin) {
+        return plantRepository.findByLatinContainingIgnoreCase(latin);
+    }
 }
